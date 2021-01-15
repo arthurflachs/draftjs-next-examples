@@ -24,6 +24,14 @@ export default function ColorEditorExample() {
     );
 
     const currentStyle = editorState.getCurrentInlineStyle();
+
+    if (selection.isCollapsed()) {
+      nextEditorState = currentStyle.reduce(
+        (state, style) => RichUtils.toggleInlineStyle(state, style),
+        nextEditorState,
+      );
+    }
+
     if (!currentStyle.has(toggledColor)) {
       nextEditorState = RichUtils.toggleInlineStyle(
         nextEditorState,
