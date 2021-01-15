@@ -1,0 +1,6 @@
+.editor {
+  border: 1px solid #ccc;
+  cursor: text;
+  min-height: 80px;
+  padding: 10px;
+}
