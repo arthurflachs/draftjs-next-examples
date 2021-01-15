@@ -1,5 +1,7 @@
+import Layout from "../../../components/layout";
+
 export default function ConvertFromHTMLExample() {
   return (
-    <div>Convert from HTML</div>
+    <Layout>Convert from HTML</Layout>
   );
 }

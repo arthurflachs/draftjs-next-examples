@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { EditorState, Modifier, RichUtils } from 'draft-js';
-import Layout from '../../../components/color/layout';
+import Layout from '../../../components/layout';
 import ColorControls from '../../../components/color/color-controls';
 import ColorEditor from '../../../components/color/color-editor';
 import { colorStyleMap } from '../../../lib/color/color-utils';
