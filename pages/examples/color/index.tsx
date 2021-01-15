@@ -1,8 +1,9 @@
 import { useState } from 'react';
-import { EditorState, RichUtils } from 'draft-js';
+import { EditorState, Modifier, RichUtils } from 'draft-js';
 import Layout from '../../../components/color/layout';
 import ColorControls from '../../../components/color/color-controls';
 import ColorEditor from '../../../components/color/color-editor';
+import { colorStyleMap } from '../../../lib/color/color-utils';
 import 'draft-js/dist/Draft.css';
 
 export default function ColorEditorExample() {
@@ -10,12 +11,25 @@ export default function ColorEditorExample() {
 
   const handleToggleColor = (toggledColor) => {
     const selection = editorState.getSelection();
-    const currentStyle = editorState.getCurrentInlineStyle();
 
-    const nextEditorState = RichUtils.toggleInlineStyle(
+    const nextContentState = Object.keys(colorStyleMap)
+      .reduce(
+        (contentState, color) => Modifier.removeInlineStyle(contentState, selection, color),
+        editorState.getCurrentContent(),
+      );
+    let nextEditorState = EditorState.push(
       editorState,
-      toggledColor
+      nextContentState,
+      'change-inline-style',
     );
+
+    const currentStyle = editorState.getCurrentInlineStyle();
+    if (!currentStyle.has(toggledColor)) {
+      nextEditorState = RichUtils.toggleInlineStyle(
+        nextEditorState,
+        toggledColor
+      );
+    }
 
     setEditorState(nextEditorState);
   }
