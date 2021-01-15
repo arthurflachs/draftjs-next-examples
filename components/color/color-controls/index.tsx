@@ -1,18 +1,25 @@
+import { EditorState } from 'draft-js';
 import StyleButton from './style-button';
 import styles from './styles.module.css';
 import { COLORS } from '../../../lib/color/color-utils';
 
-export default function ColorControls() {
+interface ColorControlsProps {
+  editorState: EditorState;
+}
+
+export default function ColorControls({ editorState }: ColorControlsProps) {
   const onToggle = (toggledColor: string) => {
     console.log(toggledColor);
   }
+
+  const currentStyle = editorState.getCurrentInlineStyle();
   
   return (
     <div className={styles.controls}>
       {COLORS.map(color => (
         <StyleButton
           key={color.label}
-          active={true}
+          active={currentStyle.has(color.style)}
           label={color.label}
           style={color.style}
           onToggle={onToggle} 

@@ -3,9 +3,12 @@ import { Editor, EditorState } from 'draft-js';
 import NoSSR from 'react-no-ssr';
 import styles from './styles.module.css';
 
-export default function ColorEditor() {
-  const [editorState, setEditorState] = useState(EditorState.createEmpty());
-  
+interface ColorEditorProps {
+  editorState: EditorState;
+  setEditorState(nextEditorState: EditorState): any;
+}
+
+export default function ColorEditor({ editorState, setEditorState }: ColorEditorProps) {
   return (
     <div className={styles.editor}>
       <NoSSR>
