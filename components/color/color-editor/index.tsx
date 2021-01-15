@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Editor, EditorState } from 'draft-js';
+import NoSSR from 'react-no-ssr';
 import styles from './styles.module.css';
 
 export default function ColorEditor() {
@@ -7,7 +8,9 @@ export default function ColorEditor() {
   
   return (
     <div className={styles.editor}>
-      <Editor editorState={editorState} onChange={setEditorState} />
+      <NoSSR>
+        <Editor editorState={editorState} onChange={setEditorState} />
+      </NoSSR>
     </div>
   );
 }
