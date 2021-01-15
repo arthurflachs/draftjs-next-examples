@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { EditorState, Modifier, RichUtils } from 'draft-js';
+import Editor from '../../../components/editor';
 import Layout from '../../../components/layout';
 import ColorControls from '../../../components/color/color-controls';
-import ColorEditor from '../../../components/color/color-editor';
 import { colorStyleMap } from '../../../lib/color/color-utils';
 import 'draft-js/dist/Draft.css';
 
@@ -45,7 +45,11 @@ export default function ColorEditorExample() {
   return (
     <Layout>
       <ColorControls editorState={editorState} onToggle={handleToggleColor} />
-      <ColorEditor editorState={editorState} setEditorState={setEditorState} />
+      <Editor
+        editorState={editorState} 
+        onChange={setEditorState}
+        customStyleMap={colorStyleMap}
+      />
     </Layout>
   );
 }
