@@ -1,5 +1,6 @@
 import StyleButton from './style-button';
 import styles from './styles.module.css';
+import { COLORS } from '../../../lib/color/color-utils';
 
 export default function ColorControls() {
   const onToggle = (toggledColor: string) => {
@@ -8,8 +9,15 @@ export default function ColorControls() {
   
   return (
     <div className={styles.controls}>
-      <StyleButton active={true} label="Blue" style="blue" onToggle={onToggle} />
-      <StyleButton active={false} label="Red" style="red" onToggle={onToggle} />
+      {COLORS.map(color => (
+        <StyleButton
+          key={color.label}
+          active={true}
+          label={color.label}
+          style={color.style}
+          onToggle={onToggle} 
+       />
+      ))}
     </div>
   );
 }
