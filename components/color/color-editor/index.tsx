@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Editor, EditorState } from 'draft-js';
 import NoSSR from 'react-no-ssr';
 import styles from './styles.module.css';
+import { colorStyleMap } from '../../../lib/color/color-utils';
 
 interface ColorEditorProps {
   editorState: EditorState;
@@ -12,7 +13,11 @@ export default function ColorEditor({ editorState, setEditorState }: ColorEditor
   return (
     <div className={styles.editor}>
       <NoSSR>
-        <Editor editorState={editorState} onChange={setEditorState} />
+        <Editor
+          editorState={editorState}
+          onChange={setEditorState} 
+          customStyleMap={colorStyleMap}
+        />
       </NoSSR>
     </div>
   );
