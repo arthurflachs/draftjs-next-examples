@@ -3,7 +3,8 @@ import { CompositeDecorator, convertFromRaw, EditorState, RawDraftContentState }
 import Editor from "../../../components/editor";
 import getTokenDecorator from "../../../components/decorators/token";
 
-const rawContent: RawDraftContentState = {
+// const rawContent: RawDraftContentState = {
+const rawContent: any = {
   blocks: [{
     text: (
       'This is an "immutable" entity: Superman. Deleting any ' +
