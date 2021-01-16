@@ -9,6 +9,7 @@ export default function EntityExample() {
     <Editor
       editorState={editorState}
       onChange={setEditorState}
+      placeholder="Enter some text"
     />
   );
 }
