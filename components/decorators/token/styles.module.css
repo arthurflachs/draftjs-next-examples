@@ -1,0 +1,14 @@
+.immutable {
+  background-color: rgba(0, 0, 0, .2);
+  padding: 2px 0;
+}
+
+.mutable {
+  background-color: rgba(204, 255, 255, 1);
+  padding: 2px 0;
+}
+
+.segmented {
+  background-color: rgba(248, 222, 126, 1);
+  padding: 2px 0;
+}
