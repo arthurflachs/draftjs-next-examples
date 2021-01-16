@@ -5,12 +5,11 @@ import styles from './styles.module.css';
 
 export default function CustomEditor(props: EditorProps) {
   const editorRef = useRef(null);
+  const editorKey = `editor-${(new Date()).getTime()}`;
 
   return (
     <div className={styles.editor} onClick={() => editorRef.current.focus()}>
-      <NoSSR>
-        <Editor {...props} ref={editorRef} />
-      </NoSSR>
+      <Editor {...props} ref={editorRef} key={editorKey} />
     </div>
   );
 }
