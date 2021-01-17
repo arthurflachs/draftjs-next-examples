@@ -9,7 +9,7 @@ import 'draft-js/dist/Draft.css';
 export default function ColorEditorExample() {
   const [editorState, setEditorState] = useState(EditorState.createEmpty());
 
-  const handleToggleColor = (toggledColor) => {
+  const handleToggleColor = (toggledColor: string) => {
     const selection = editorState.getSelection();
 
     const nextContentState = Object.keys(colorStyleMap)
